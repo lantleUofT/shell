@@ -18,6 +18,7 @@ cd newproject
 
 mkdir analysis output
 touch README.md
+echo "# Project Name: DSI Consulting Inc." > README.md
 touch analysis/main.py
 
 # download client data
@@ -28,23 +29,30 @@ unzip -q rawdata.zip
 # Complete assignment here
 
 # 1. Create a directory named data
-
+cd "/Users/levi/Documents/Documents/Graduate School Stuff/DSI certification class/DSI coding/Assignement 1/shell/assignments/newproject"
+mkdir data
 # 2. Move the ./rawdata directory to ./data/raw (eg. move it into ./data and rename it to raw)
-
+mv rawdata data/raw
 # 3. List the contents of the ./data/raw directory
-
+ls data/raw
 # 4. Create the directory ./data/processed, 
 #    then create the following sub-directories within it: server_logs, user_logs, and event_logs
-
+mkdir data/processed
+mkdir data/processed/server_logs
+mkdir data/processed/user_logs
+mkdir data/processed/event_logs
 # 5. Copy all server log files (files with "server" in the name AND a .log extension) from ./data/raw to ./data/processed/server_logs
+cp -v data/raw/server_log_*.log data/processed/server_logs
 
 # 6. Repeat the above step for user logs and event logs
+cp -v data/raw/user_log_*.log data/processed/user_logs
+cp -v data/raw/event_log_*.log data/processed/event_logs
 
 # 7. For user privacy, remove all files containing IP addresses (files with "ipaddr" in the filename) from ./data/raw and ./data/processed/user_logs
-
+rm -v data/raw/*ipaddr*
 # 8. Create a file named ./data/inventory.txt that lists all the files in the subfolders of ./data/processed
-
-
+touch data/inventory.txt
+ls data/processed/server_logs data/processed/user_logs data/processed/event_logs >> data/inventory.txt
 ###########################################
 
 echo "Project setup is complete!"
